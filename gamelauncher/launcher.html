@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="html" lang="pt-BR">
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Launcher</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/launch.css"
+            id="pagesheet"
+        />
+    </head>
+
+    <body>
+        <main id="page" class="h-100 py-3">
+            <div id="wrapper">
+                <div class="nav">
+                    <div class="dropdown">
+                        <div class="menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="dropdown-items">
+                            <a href="https://cfepic.com/pages/sign.php">
+                                <span>Create Account</span>
+                            </a>
+                            <a href="https://cfepic.com/pages/login.php">
+                                <span>Login</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="banners">
+                    <div id="bannerContent">
+                        <div class="box" style="margin-bottom: 12px">
+                            <div class="feature">
+                                <a href="https://cfepic.com/pages/sign.php"
+                                    ><img src="images/new/registration9.png"
+                                /></a>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-container">
+                                    <img
+                                        decoding="async"
+                                        src="images/new/e2r.png"
+                                        alt=""
+                                    />
+                                    <img
+                                        decoding="async"
+                                        src="images/new/Black-Friday-Final.png"
+                                        alt=""
+                                    />
+                                    <img
+                                        decoding="async"
+                                        src="images/new/New-vip-post.jpg"
+                                        alt=""
+                                    />
+                                    <img
+                                        decoding="async"
+                                        src="images/new/New-vip-post.png"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="slider-controls">
+                                    <img
+                                        decoding="async"
+                                        src="images/new/e2r.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="discord">
+                                <a href="https://discord.gg/cfepic">
+                                    <img
+                                        src="images/220929_cfbr_purplefuxi_crate_launcherbottom.jpg"
+                                /></a>
+                            </div>
+                            <div class="new">
+                                <a href="https://cfepic.com">
+                                    <img
+                                        src="images/new/220105_cfbr_roadmap_launcherpatch.jpg"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer_container">
+                    <footer>
+                        <div class="social">
+                            <a href="https://discord.gg/cfepic">
+                                <img src="images/discord_logo.png" />
+                            </a>
+                            <a
+                                href="https://www.facebook.com/profile.php?id=100072386326041"
+                            >
+                                <img src="images/facebook_logo.png" />
+                            </a>
+                            <a href="https://www.youtube.com/@MOR3EB0">
+                                <img src="images/youtube_logo.png" />
+                            </a>
+                            <span class="devider"></span>
+                        </div>
+                        <div class="server">
+                            <span class="devider"></span>
+                            <p>Server Time : <span id="time"></span></p>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </main>
+        <!-- JavaScript Bundle with Popper -->
+        <script>
+            // Get time
+            const timeEle = document.getElementById("time");
+
+            let s = new Date().toLocaleString();
+
+            timeEle.innerHTML = s.split(",").slice(-1).join("");
+
+            // Menu
+            function addActive() {
+                document.querySelector(".menu").classList.toggle("active");
+                document
+                    .querySelector(".dropdown-items")
+                    .classList.toggle("active");
+            }
+
+            document
+                .querySelector(".menu")
+                .addEventListener("click", addActive);
+
+            // Slider
+            // Get Slider Items | Array.form [ES6 Feature]
+            var sliderImages = Array.from(
+                document.querySelectorAll(".slider-container img")
+            );
+
+            // Get Number Of Slides
+            var slidesCount = sliderImages.length;
+
+            // Set Current Slide
+            var currentSlide = 1;
+
+            // Previous and Next Buttons
+            var nextButton = document.getElementById("next");
+            var prevButton = document.getElementById("prev");
+
+            // Handle Click on Previous and Next Buttons
+            nextButton.onclick = nextSlide;
+            prevButton.onclick = prevSlide;
+
+            // Trigger The Checker Function
+            theChecker();
+
+            // Next Slide Function
+            function nextSlide() {
+                if (nextButton.classList.contains("disabled")) {
+                    // Do Nothing
+                    return false;
+                } else {
+                    currentSlide++;
+
+                    theChecker();
+                }
+            }
+
+            // Previous Slide Function
+            function prevSlide() {
+                if (prevButton.classList.contains("disabled")) {
+                    // Do Nothing
+                    return false;
+                } else {
+                    currentSlide--;
+
+                    theChecker();
+                }
+            }
+
+            // Create The Checker Function
+            function theChecker() {
+                // Remove All Active Classes
+                removeAllActive();
+
+                // Set Active Class On Current Slide
+                sliderImages[currentSlide - 1].classList.add("active");
+
+                // Check if Current Slide is The First
+                if (currentSlide == 1) {
+                    // Add Disabled Class on Previous Button
+                    prevButton.classList.add("disabled");
+                } else {
+                    // Remove Disabled Class From Previous Button
+                    prevButton.classList.remove("disabled");
+                }
+
+                // Check if Current Slide is The Last
+                if (currentSlide == slidesCount) {
+                    // Add Disabled Class on Next Button
+                    nextButton.classList.add("disabled");
+                } else {
+                    // Remove Disabled Class From Next Button
+                    nextButton.classList.remove("disabled");
+                }
+            }
+
+            // Remove All Active Classes From Images and Pagination Bullets
+            function removeAllActive() {
+                // Loop Through Images
+                sliderImages.forEach(function (img) {
+                    img.classList.remove("active");
+                });
+            }
+        </script>
+    </body>
+</html>

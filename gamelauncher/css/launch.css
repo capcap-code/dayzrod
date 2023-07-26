@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+/* Global Rules */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #000;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif !important;
+}
+
+.px-1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Design */
+#page {
+    max-width: 1018px;
+    max-height: 596px;
+    margin: auto;
+    overflow: hidden;
+}
+
+#wrapper {
+    border: 1px solid #777;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.nav {
+    height: 30px;
+    background-color: #452020;
+    width: 100%;
+}
+
+.dropdown {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+}
+
+.dropdown .menu {
+    display: flex;
+    flex-direction: column;
+    width: 2%;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    margin-right: 15px;
+}
+
+.menu span {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: transform 0.3s;
+}
+
+.menu span:not(:last-of-type) {
+    margin-bottom: 4px;
+}
+
+.menu.active span:nth-child(1) {
+    transform: rotate(-40deg);
+    position: relative;
+    bottom: -3px;
+}
+.menu.active span:nth-child(2) {
+    display: none;
+}
+.menu.active span:nth-child(3) {
+    transform: rotate(40deg);
+    position: relative;
+    top: -4px;
+}
+.dropdown .dropdown-items {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.dropdown .dropdown-items a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    bottom: -20px;
+    transition: bottom 0.3s;
+    margin-right: 10px;
+}
+
+.dropdown .dropdown-items.active a {
+    bottom: 0px;
+}
+
+.dropdown .dropdown-items a span {
+    font-size: 14px;
+}
+
+.dropdown .dropdown-items a span:hover {
+    text-decoration: underline;
+    color: #c14f4f;
+}
+
+/* banners */
+#bannerContent {
+    background-image: url("/images/new/epiclauncher.png");
+    width: 100%;
+    padding: 10px 30px;
+}
+
+#bannerContent .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bannerContent .box:first-of-type {
+    height: 330px;
+}
+
+#bannerContent .box .feature {
+    width: 100%;
+    height: 100%;
+    margin-right: 12px;
+}
+
+#bannerContent .box .slider {
+    width: 564px;
+    position: relative;
+    height: 100%;
+}
+
+/* Slider */
+.slider-container {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.slider-container img {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 1;
+}
+.slider-container img.active {
+    opacity: 1;
+}
+.slider-container .slide-number {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+    z-index: 2;
+    border-radius: 6px;
+}
+.slider-controls {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+}
+.slider-controls .prev,
+.slider-controls .next {
+    background-color: rgba(51, 51, 51, 0.404);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 17px 15px;
+    user-select: none;
+    width: 12%;
+    cursor: pointer;
+}
+.slider-controls .prev:hover,
+.slider-controls .next:hover {
+    background-color: #333;
+}
+.slider-controls .prev {
+    float: left;
+}
+.slider-controls .next {
+    float: right;
+}
+.slider-controls .prev.disabled,
+.slider-controls .next.disabled {
+    display: none;
+}
+.slider-controls .indicators {
+    width: 60%;
+    float: left;
+}
+.slider-controls .indicators ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
+.slider-controls .indicators ul li {
+    display: inline-block;
+    background-color: #f6f6f6;
+    color: #333;
+    font-weight: bold;
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    margin: 0 2px;
+    line-height: 28px;
+    cursor: pointer;
+}
+.slider-controls .indicators ul li.active {
+    background-color: #009688;
+    color: #fff;
+}
+
+/* Discord & New */
+#bannerContent .box .discord {
+    width: 100%;
+    height: 160px;
+    margin-right: 12px;
+}
+
+#bannerContent .box .new {
+    width: 564px;
+    position: relative;
+    height: 160px;
+}
+
+/* Footer */
+#footer_container {
+    height: 30px;
+    background-color: #452020;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#footer_container footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+footer .social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3px;
+    position: relative;
+}
+
+footer .social a:not(:last-of-type) {
+    margin-right: 8px;
+}
+
+footer .social .devider {
+    position: absolute;
+    right: -40%;
+    top: -22%;
+    background: black;
+    width: 8%;
+    height: 150%;
+    transform: rotate(-20deg);
+}
+
+footer .server {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+footer .server p {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+footer .server span {
+    color: rgb(70, 235, 70);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+footer .server .devider {
+    position: absolute;
+    left: -13%;
+    top: -22%;
+    background: black;
+    width: 3%;
+    height: 150%;
+    transform: rotate(-20deg);
+}
